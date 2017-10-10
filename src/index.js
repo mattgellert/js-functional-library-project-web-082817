@@ -213,9 +213,11 @@ fi = (function() {
     functions: function(obj) {
       return Object.getOwnPropertyNames(obj).sort();
     },//end
-    bind: function(func, object, arg) {
-      return function fn(func, object, arg) {
-        func.call(object, arg)
+    
+    bind: function(func, obj, greeting) {
+      return function() {
+        Object.assign(this, obj)
+        return func(greeting)
       }
     }
   }
